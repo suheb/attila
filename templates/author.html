@@ -12,6 +12,14 @@
             {% set author_avatar = SITEURL+"/"+author_avatar %}
         {% endif %}
     {% endif %}
+    {% set author_cover = AUTHORS_BIO[author.name.lower()].cover %}
+    {% if  author_cover %}
+        {% if author_cover|lower|truncate(4, True, '') == "http" %}
+            {% set author_cover = author_cover %}
+        {% else %}
+            {% set author_cover = SITEURL+"/"+author_cover %}
+        {% endif %}
+    {% endif %}
 {% endif %}
 
 {% block opengraph %}
@@ -43,8 +51,8 @@
           </span>
         </nav>
         {% if AUTHORS_BIO and author.name.lower() in AUTHORS_BIO %}
-        {% if author_avatar %}
-            <div class="blog-cover cover" style="background-image: url('{{ author_avatar }}')">
+        {% if author_cover %}
+            <div class="blog-cover cover" style="background-image: url('{{ author_cover }}')">
         {% endif %}
         {% elif HEADER_COVER %}
             <div class="blog-cover cover" style="background-image: url('{{ HEADER_COVER }}')">
