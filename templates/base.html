@@ -94,9 +94,8 @@
 
   {% include 'partials/navigation.html' %}
 
-  {% block header %}{% endblock header %}
-
   <section id="wrapper">
+    {% block header %}{% endblock header %}
     <a class="hidden-close"></a>
       {% block content %}{% endblock content %}
       <!-- TODO : Body class -->
